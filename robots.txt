@@ -1,0 +1,5 @@
+User-agent: *  
+Allow: /  
+Disallow: /secret (¡mentira, no hay nada aquí!)  
+
+Sitemap: https://banana-troll.vercel.app/sitemap.xml  
