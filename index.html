@@ -1,0 +1,46 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <title>¡VIRUS BANANA POWER! 🍌👹</title>  
+    <style>  
+        body {  
+            background: black;  
+            color: lime;  
+            font-family: monospace;  
+            text-align: center;  
+            padding-top: 100px;  
+        }  
+    </style>  
+</head>  
+<body>  
+    <h1>⚠️ *¡ALERTA DE BANANA MALIGNA!* 🍌💥</h1>  
+    <p>Este virus hará que tu CPU baile salsa... *pero en bucle*.</p>  
+    <button onclick="activateVirus()">👉 *¡ACTIVAR VIRUS!* 👈</button>  
+
+    <script>  
+        function activateVirus() {  
+            // Spam de ventanas *fake* (se cierran solas)  
+            let count = 0;  
+            const messages = [  
+                "¡TU PC AHORA ES UNA BANANA! 🍌",  
+                "ERROR: *Te quedaste sin chill.*",  
+                "¿QUIERES RECUPERAR TUS ARCHIVOS? (No)",  
+                "MAYCOL DICE: 'APAGA, ES UNA TRAMPA' 😱",  
+                "INSTALANDO *BANANAOS*... 999%",  
+            ];  
+
+            const virusInterval = setInterval(() => {  
+                if (count >= 15) {  
+                    clearInterval(virusInterval);  
+                    alert("🪳 *¡VIRUS DESACTIVADO!* (Era mentira... o no)");
+                } else {  
+                    window.open("", "_blank", "width=300,height=200").document.write(  
+                        `<h1 style="color: red;">${messages[count % messages.length]}</h1>`  
+                    );  
+                    count++;  
+                }  
+            }, 500);  
+        }  
+    </script>  
+</body>  
+</html>  
