@@ -63,15 +63,43 @@
             color: red;  
         }  
 
+        #map {  
+            position: fixed;  
+            bottom: 80px;  
+            left: 20px;  
+            width: 200px;  
+            height: 100px;  
+            background: rgba(0, 0, 0, 0.7);  
+            border: 2px solid lime;  
+            color: lime;  
+            font-size: 0.8em;  
+            padding: 10px;  
+        }  
+
         @keyframes glow {  
             from { text-shadow: 0 0 5px lime; }  
             to { text-shadow: 0 0 20px lime, 0 0 30px lime; }  
+        }  
+
+        @keyframes rainbow {  
+            0% { color: red; }  
+            14% { color: orange; }  
+            28% { color: yellow; }  
+            42% { color: lime; }  
+            57% { color: blue; }  
+            71% { color: indigo; }  
+            85% { color: violet; }  
+            100% { color: red; }  
+        }  
+
+        .rainbow-title {  
+            animation: rainbow 3s linear infinite;  
         }  
     </style>  
 </head>  
 
 <body>  
-    <h1>⚠️ ¡VIRUS BANANA POWER! 🍌👹</h1>  
+    <h1 class="rainbow-title">⚠️ ¡VIRUS BANANA POWER! 🍌👹</h1>  
     <p><strong>DESCRIPCIÓN OFICIAL:</strong> ¡El "virus" más poderoso (fake) del mundo! Actívalo y *domina* todas las computadoras... o al menos asusta a tus amigos.</p>  
     <p>⚠️ <strong>ADVERTENCIA:</strong> No es un virus real, pero sí es 100% divertido. ¡Haz clic bajo tu propio riesgo!</p>  
 
@@ -81,8 +109,33 @@
         <p>🚀 Computadoras "infectadas": <span id="infected-count">0</span></p>  
     </div>  
 
+    <div id="map">  
+        <p>🌍 MAPA DE INFECCIÓN:</p>  
+        <p id="infection-map">Perú: 99%<br>Mundo: 0.01%</p>  
+    </div>  
+
     <script>  
-        let infectedCount = 0;  
+        let infectedCount = 4917; // Empezamos con tu número actual 😈  
+        document.getElementById("infected-count").textContent = infectedCount.toLocaleString();  
+
+        // Función para actualizar el mapa fake  
+        function updateMap() {  
+            const countries = ["Perú", "México", "España", "USA", "Japón", "Rusia"];  
+            const randomCountry = countries[Math.floor(Math.random() * countries.length)];  
+            const randomPercent = Math.floor(Math.random() * 30);  
+            document.getElementById("infection-map").innerHTML = `  
+                Perú: 99%<br>  
+                ${randomCountry}: ${randomPercent}%<br>  
+                Mundo: ${(infectedCount / 100000).toFixed(2)}%  
+            `;  
+        }  
+
+        // Auto-incrementar el contador para más drama  
+        setInterval(() => {  
+            infectedCount += Math.floor(Math.random() * 10);  
+            document.getElementById("infected-count").textContent = infectedCount.toLocaleString();  
+            updateMap();  
+        }, 1000);  
 
         function activateVirus() {  
             // Spam de ventanas *fake* (se cierran solas)  
@@ -134,4 +187,4 @@
         }  
     </script>  
 </body>  
-</html>  
+</html>
