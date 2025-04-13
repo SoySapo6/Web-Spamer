@@ -1,23 +1,89 @@
 <!DOCTYPE html>  
-<html>  
+<html lang="es">  
 <head>  
-    <title>¡VIRUS BANANA POWER! 🍌👹</title>  
+    <!-- META TAGS PARA SEO (¡PARA SER FAMOSO EN GOOGLE!) -->
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="description" content="¡EL VIRUS BANANA MÁS PODEROSO DEL MUNDO! 🍌💻 Actívalo y domina todas las computadoras (mentira, es fake).">  
+    <meta name="keywords" content="virus, banana, hackear, computadora, troll, html, javascript">  
+    <meta name="author" content="SoyMaycol">  
+    <meta property="og:title" content="¡VIRUS BANANA POWER! 🍌👹">  
+    <meta property="og:description" content="¿Quieres infectar todas las PCs? ¡Este es el virus más épico (pero falso) que existe!">  
+    <meta property="og:image" content="https://files.catbox.moe/u3s0ug.png"> <!-- Imagen fake de un banana hacker -->  
+
+    <title>¡VIRUS BANANA POWER! 🍌👹 - DOMINA TODAS LAS PCs</title>  
+
     <style>  
         body {  
+            background: #000 url('https://i.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.webp') no-repeat center center fixed;  
+            background-size: cover;  
+            color: lime;  
+            font-family: 'Courier New', monospace;  
+            text-align: center;  
+            padding-top: 50px;  
+            margin: 0;  
+            height: 100vh;  
+            overflow: hidden;  
+            text-shadow: 0 0 5px lime;  
+        }  
+
+        h1 {  
+            font-size: 2.5em;  
+            animation: glow 1s infinite alternate;  
+        }  
+
+        p {  
+            font-size: 1.2em;  
+            max-width: 600px;  
+            margin: 20px auto;  
+        }  
+
+        button {  
             background: black;  
             color: lime;  
-            font-family: monospace;  
-            text-align: center;  
-            padding-top: 100px;  
+            border: 2px solid lime;  
+            padding: 15px 30px;  
+            font-size: 1.2em;  
+            cursor: pointer;  
+            margin: 20px;  
+            transition: all 0.3s;  
+        }  
+
+        button:hover {  
+            background: lime;  
+            color: black;  
+            transform: scale(1.1);  
+        }  
+
+        #counter {  
+            position: fixed;  
+            bottom: 20px;  
+            right: 20px;  
+            font-size: 1.5em;  
+            color: red;  
+        }  
+
+        @keyframes glow {  
+            from { text-shadow: 0 0 5px lime; }  
+            to { text-shadow: 0 0 20px lime, 0 0 30px lime; }  
         }  
     </style>  
 </head>  
+
 <body>  
-    <h1>⚠️ *¡ALERTA DE BANANA MALIGNA!* 🍌💥</h1>  
-    <p>Este virus hará que tu CPU baile salsa... *pero en bucle*.</p>  
-    <button onclick="activateVirus()">👉 *¡ACTIVAR VIRUS!* 👈</button>  
+    <h1>⚠️ ¡VIRUS BANANA POWER! 🍌👹</h1>  
+    <p><strong>DESCRIPCIÓN OFICIAL:</strong> ¡El "virus" más poderoso (fake) del mundo! Actívalo y *domina* todas las computadoras... o al menos asusta a tus amigos.</p>  
+    <p>⚠️ <strong>ADVERTENCIA:</strong> No es un virus real, pero sí es 100% divertido. ¡Haz clic bajo tu propio riesgo!</p>  
+
+    <button onclick="activateVirus()">👉 ¡ACTIVAR VIRUS BANANA! 👈</button>  
+
+    <div id="counter">  
+        <p>🚀 Computadoras "infectadas": <span id="infected-count">0</span></p>  
+    </div>  
 
     <script>  
+        let infectedCount = 0;  
+
         function activateVirus() {  
             // Spam de ventanas *fake* (se cierran solas)  
             let count = 0;  
@@ -27,19 +93,44 @@
                 "¿QUIERES RECUPERAR TUS ARCHIVOS? (No)",  
                 "MAYCOL DICE: 'APAGA, ES UNA TRAMPA' 😱",  
                 "INSTALANDO *BANANAOS*... 999%",  
+                "¡HAS SIDO HACKEADO POR UNA BANANA! 🍌💀",  
+                "DESCARGANDO *MEMES SECRETOS*...",  
+                "TU CPU AHORA BAILA REGGAETÓN. 💃",  
             ];  
 
+            // Incrementar el contador fake de "infecciones"  
+            infectedCount += 1000 + Math.floor(Math.random() * 5000);  
+            document.getElementById("infected-count").textContent = infectedCount.toLocaleString();  
+
             const virusInterval = setInterval(() => {  
-                if (count >= 15) {  
+                if (count >= 20) {  
                     clearInterval(virusInterval);  
-                    alert("🪳 *¡VIRUS DESACTIVADO!* (Era mentira... o no)");
+                    alert("🪳 *¡VIRUS DESACTIVADO!* (Era mentira... o no)");  
                 } else {  
-                    window.open("", "_blank", "width=300,height=200").document.write(  
-                        `<h1 style="color: red;">${messages[count % messages.length]}</h1>`  
-                    );  
+                    const newWindow = window.open("", "_blank", "width=300,height=200");  
+                    newWindow.document.write(`  
+                        <html>  
+                        <head>  
+                            <title>¡BANANA ATTACK! 🍌</title>  
+                            <style>  
+                                body {  
+                                    background: black;  
+                                    color: red;  
+                                    font-family: monospace;  
+                                    text-align: center;  
+                                    padding-top: 50px;  
+                                }  
+                            </style>  
+                        </head>  
+                        <body>  
+                            <h1>${messages[count % messages.length]}</h1>  
+                            <p>${Math.floor(Math.random() * 100)}% INFECTADO</p>  
+                        </body>  
+                        </html>  
+                    `);  
                     count++;  
                 }  
-            }, 500);  
+            }, 300);  
         }  
     </script>  
 </body>  
