@@ -9,16 +9,17 @@
             background: #000 url('https://i.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.webp') no-repeat center center fixed;
             background-size: cover;
             color: lime;
-            font-family: 'Courier New', monospace;
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* ¡COMIC SANS PARA MÁS ODIO! */
             text-align: center;
             margin: 0;
             height: 100vh;
             overflow: hidden;
             text-shadow: 0 0 5px lime;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text x="0" y="28" font-size="28">🍌</text></svg>'), auto;
         }
         h1 {
             font-size: 2.5em;
-            animation: glow 1s infinite alternate, rainbow 3s linear infinite;
+            animation: glow 1s infinite alternate, rainbow 3s linear infinite, shake 0.5s infinite;
         }
         button {
             background: black;
@@ -26,14 +27,14 @@
             border: 2px solid lime;
             padding: 15px 30px;
             font-size: 1.2em;
-            cursor: pointer;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text x="0" y="28" font-size="28">💣</text></svg>'), auto;
             margin: 20px;
             transition: all 0.3s;
         }
         button:hover {
             background: lime;
             color: black;
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(360deg);
         }
         #counter {
             position: fixed;
@@ -41,6 +42,7 @@
             right: 20px;
             font-size: 1.5em;
             color: red;
+            animation: pulse 1s infinite;
         }
         #install-progress {
             position: fixed;
@@ -53,6 +55,22 @@
             padding: 10px;
             display: none;
         }
+        #fake-cursor {
+            position: absolute;
+            font-size: 24px;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        #rickroll {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            z-index: 9998;
+            display: none;
+        }
         @keyframes glow {
             from { text-shadow: 0 0 5px lime; }
             to { text-shadow: 0 0 20px lime, 0 0 30px lime; }
@@ -63,9 +81,18 @@
             85% { color: violet; } 100% { color: red; }
         }
         @keyframes shake {
-            0% { transform: translateX(0); } 25% { transform: translateX(-5px); }
-            50% { transform: translateX(5px); } 75% { transform: translateX(-5px); }
-            100% { transform: translateX(0); }
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -83,43 +110,70 @@
         <div id="progress-bar" style="height: 20px; background: lime; width: 0%;"></div>
     </div>
 
+    <div id="rickroll">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" allow="autoplay"></iframe>
+    </div>
+
     <script>
-        let infectedCount = 4917;
+        // ====== 12 NUEVAS MEJORAS MOLESTAS ======
+        // 1. Cursor de banana personalizado 🍌
+        document.addEventListener('mousemove', (e) => {
+            const cursor = document.createElement('div');
+            cursor.id = 'fake-cursor';
+            cursor.innerHTML = '🍌';
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+            document.body.appendChild(cursor);
+            setTimeout(() => cursor.remove(), 50);
+        });
+
+        // 2. Sonidos molestos aleatorios (más variedad)
         const annoyingSounds = [
             'https://assets.mixkit.co/sfx/preview/mixkit-alarm-digital-clock-beep-989.mp3',
+            'https://assets.mixkit.co/sfx/preview/mixkit-funny-squeaky-toy-259.mp3',
             'https://assets.mixkit.co/sfx/preview/mixkit-ominous-drone-227.mp3',
-            'https://assets.mixkit.co/sfx/preview/mixkit-funny-squeaky-toy-259.mp3'
+            'https://assets.mixkit.co/sfx/preview/mixkit-cartoon-voice-laugh-343.mp3',
+            'https://assets.mixkit.co/sfx/preview/mixkit-air-whistle-640.mp3'
         ];
 
-        // Auto-incrementar el contador
+        // 3. Auto-incrementar contador dramáticamente
+        let infectedCount = 4917;
         setInterval(() => {
-            infectedCount += Math.floor(Math.random() * 5);
+            infectedCount += Math.floor(Math.random() * 10);
             document.getElementById("infected-count").textContent = infectedCount.toLocaleString();
-        }, 1000);
+        }, 800);
 
-        // Mover la URL como loca
+        // 4. URL loca + título cambiante
         function shakeURL() {
             const titles = [
                 "🍌 BANANA HACKED!",
                 "⚠️ VIRUS ACTIVO",
                 "🚨 ALERTA DE PLÁTANO",
-                "👹 MAYCOL TE HACKEÓ"
+                "👹 MAYCOL TE HACKEÓ",
+                "💣 TU PC EXPLOTARÁ EN 10s",
+                "🤪 LOLOLOLOL"
             ];
             let counter = 0;
             setInterval(() => {
                 document.title = titles[counter % titles.length];
+                history.pushState({}, "", "/" + titles[counter % titles.length].replace(/\s/g, "-"));
                 counter++;
             }, 500);
         }
 
-        // Instalación fake de apps
+        // 5. Instalación fake con apps absurdas
         function fakeInstall() {
             const apps = [
                 "BananaOS 2.0",
                 "Plátano Player Pro",
                 "Banana Firewall",
                 "Anti-Virus de Banana",
-                "Banana Screensaver HD"
+                "Banana Screensaver HD",
+                "Banana Cryptominer",
+                "Banana Keyboard",
+                "Banana VPN Premium",
+                "Banana Task Manager",
+                "Banana Browser"
             ];
             let progress = 0;
             const progressBar = document.getElementById("progress-bar");
@@ -132,47 +186,98 @@
                 
                 if (progress % 25 === 0) {
                     const randomApp = apps[Math.floor(Math.random() * apps.length)];
-                    installDiv.innerHTML += `<p>✔ Instalando ${randomApp}...</p>`;
+                    installDiv.innerHTML += `<p>✔ Instalando ${randomApp}... <span style="color: red;">(FAILED)</span></p>`;
                     playRandomSound();
                 }
 
                 if (progress >= 100) {
                     clearInterval(installInterval);
                     installDiv.innerHTML += `<p>🎉 ¡Instalación completa! (Mentira)</p>`;
+                    setTimeout(() => document.getElementById("rickroll").style.display = "block", 1000);
                 }
             }, 300);
         }
 
+        // 6. Rickroll automático al final
         function playRandomSound() {
             const sound = new Audio(annoyingSounds[Math.floor(Math.random() * annoyingSounds.length)]);
-            sound.volume = 0.5;
+            sound.volume = 0.7;
             sound.play().catch(e => console.log("No se pudo reproducir el sonido:", e));
         }
 
-        function activateVirus() {
-            shakeURL();
-            fakeInstall();
-            playRandomSound();
-
-            // Spam de ventanas
+        // 7. Spam de ventanas que se mueven
+        function spawnWindows() {
             let count = 0;
             const messages = [
                 "🍌 ¡BANANA HACKEANDO TU PC!",
                 "ERROR: Tu PC ahora es un plátano",
                 "Instalando bloatware de banana...",
-                "¡MAYCOL TE VIO CON EL VIRUS! 😱"
+                "¡MAYCOL TE VIO CON EL VIRUS! 😱",
+                "DESINSTALANDO WINDOWS...",
+                "TU CPU ESTÁ EN LLAMAS 🔥"
             ];
 
             const virusInterval = setInterval(() => {
-                if (count >= 15) {
+                if (count >= 20) {
                     clearInterval(virusInterval);
                 } else {
-                    window.open("", "_blank", "width=300,height=200").document.write(
-                        `<h1 style="color: red; font-family: Courier New;">${messages[count % messages.length]}</h1>`
-                    );
+                    const win = window.open("", "_blank", `width=${Math.random() * 300 + 200},height=${Math.random() * 300 + 200}`);
+                    win.document.write(`<h1 style="color: red; font-family: Comic Sans MS; animation: spin 1s infinite;">${messages[count % messages.length]}</h1>`);
+                    win.moveTo(Math.random() * screen.width, Math.random() * screen.height);
                     count++;
                 }
             }, 800);
+        }
+
+        // 8. Teclas que no funcionan (¡molesto!)
+        document.addEventListener('keydown', (e) => {
+            if (Math.random() > 0.7) {
+                e.preventDefault();
+                alert("🚫 Tecla BLOQUEADA por Banana Virus");
+            }
+        });
+
+        // 9. Scroll invertido
+        window.addEventListener('wheel', (e) => {
+            window.scrollBy(0, e.deltaY * -1);
+        });
+
+        // 10. Botón que escapa del cursor
+        const btn = document.querySelector('button');
+        btn.addEventListener('mouseover', () => {
+            if (Math.random() > 0.5) {
+                btn.style.position = "absolute";
+                btn.style.left = `${Math.random() * window.innerWidth}px`;
+                btn.style.top = `${Math.random() * window.innerHeight}px`;
+            }
+        });
+
+        // 11. Cambiar fondo aleatoriamente
+        setInterval(() => {
+            const colors = ["#000", "#ff00ff", "#00ffff", "#ff0000"];
+            document.body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        }, 5000);
+
+        // 12. Notificaciones falsas
+        function fakeNotifications() {
+            if (Notification.permission === "granted") {
+                setInterval(() => {
+                    new Notification("🍌 BANANA ALERT", {
+                        body: "Tu PC ha sido infectada al 100%",
+                        icon: "https://files.catbox.moe/u3s0ug.png"
+                    });
+                }, 10000);
+            } else {
+                Notification.requestPermission();
+            }
+        }
+
+        function activateVirus() {
+            shakeURL();
+            fakeInstall();
+            spawnWindows();
+            fakeNotifications();
+            playRandomSound();
         }
     </script>
 </body>
