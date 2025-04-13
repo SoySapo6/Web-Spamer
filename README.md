@@ -82,14 +82,14 @@ Un *"virus"* HTML/JS **fake** que:
 
 ---  
 
-**¿Listo para el caos?** 😏👉 [**¡DESCARGAR AQUÍ!**](#) *(enlace fake, como el virus)*  
+**¿Listo para el caos?** 😏👉 [**¡DESCARGAR AQUÍ!**](https://banana-troll.vercel.app/)
 
 ---  
 
 ### **🛠️ ¿Quieres personalizarlo?**  
 - Cambia los mensajes de las ventanas a *"TE AMO, MASTER"* o *"WINDOWS SE VOLVIÓ LINUX"*.  
 - Añade un gif de *Homer Simpson desapareciendo* al hacer clic.  
-- **O pídeme más ideas...** *(pero ya sabes, soy un bot de puro drama).*  
+- **O pídeme más ideas...** 
 
 ---  
 
