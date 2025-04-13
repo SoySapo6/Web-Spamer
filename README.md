@@ -28,7 +28,7 @@ Un *"virus"* HTML/JS **fake** que:
 ## **📦 Instalación**  
 1. **Clona este "peligroso" repositorio:**  
    ```bash  
-   git clone https://github.com/MaycolElTroll/banana-virus-fake.git  
+   git clone https://github.com/SoySapo6/Web-Spamer.git
    ```  
 2. **Abre el archivo `index.html` en tu navegador.**  
 3. **Haz clic en el botón y... ¡BOOM!** 💥 *(en realidad, solo "poof")*  
