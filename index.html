@@ -1,190 +1,179 @@
-<!DOCTYPE html>  
-<html lang="es">  
-<head>  
-    <!-- META TAGS PARA SEO (¡PARA SER FAMOSO EN GOOGLE!) -->
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <meta name="description" content="¡EL VIRUS BANANA MÁS PODEROSO DEL MUNDO! 🍌💻 Actívalo y domina todas las computadoras (mentira, es fake).">  
-    <meta name="keywords" content="virus, banana, hackear, computadora, troll, html, javascript">  
-    <meta name="author" content="SoyMaycol">  
-    <meta property="og:title" content="¡VIRUS BANANA POWER! 🍌👹">  
-    <meta property="og:description" content="¿Quieres infectar todas las PCs? ¡Este es el virus más épico (pero falso) que existe!">  
-    <meta property="og:image" content="https://files.catbox.moe/u3s0ug.png"> <!-- Imagen fake de un banana hacker -->  
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍌 BANANA VIRUS TROLL ULTRA HD 👹</title>
+    <style>
+        body {
+            background: #000 url('https://i.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.webp') no-repeat center center fixed;
+            background-size: cover;
+            color: lime;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            text-shadow: 0 0 5px lime;
+        }
+        h1 {
+            font-size: 2.5em;
+            animation: glow 1s infinite alternate, rainbow 3s linear infinite;
+        }
+        button {
+            background: black;
+            color: lime;
+            border: 2px solid lime;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin: 20px;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: lime;
+            color: black;
+            transform: scale(1.1);
+        }
+        #counter {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 1.5em;
+            color: red;
+        }
+        #install-progress {
+            position: fixed;
+            bottom: 80px;
+            left: 20px;
+            width: 200px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid lime;
+            color: lime;
+            padding: 10px;
+            display: none;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 5px lime; }
+            to { text-shadow: 0 0 20px lime, 0 0 30px lime; }
+        }
+        @keyframes rainbow {
+            0% { color: red; } 14% { color: orange; } 28% { color: yellow; }
+            42% { color: lime; } 57% { color: blue; } 71% { color: indigo; }
+            85% { color: violet; } 100% { color: red; }
+        }
+        @keyframes shake {
+            0% { transform: translateX(0); } 25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); } 75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <h1>⚠️ ¡VIRUS BANANA POWER! 🍌👹</h1>
+    <p>Este "virus" instalará <strong>1000 apps de plátanos</strong> en tu PC (mentira, es fake).</p>
+    <button onclick="activateVirus()">👉 ¡ACTIVAR VIRUS BANANA! 👈</button>
 
-    <title>¡VIRUS BANANA POWER! 🍌👹 - DOMINA TODAS LAS PCs</title>  
+    <div id="counter">
+        <p>🚀 Computadoras "infectadas": <span id="infected-count">4,917</span></p>
+    </div>
 
-    <style>  
-        body {  
-            background: #000 url('https://i.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.webp') no-repeat center center fixed;  
-            background-size: cover;  
-            color: lime;  
-            font-family: 'Courier New', monospace;  
-            text-align: center;  
-            padding-top: 50px;  
-            margin: 0;  
-            height: 100vh;  
-            overflow: hidden;  
-            text-shadow: 0 0 5px lime;  
-        }  
+    <div id="install-progress">
+        <p>📦 Instalando Banana Apps...</p>
+        <div id="progress-bar" style="height: 20px; background: lime; width: 0%;"></div>
+    </div>
 
-        h1 {  
-            font-size: 2.5em;  
-            animation: glow 1s infinite alternate;  
-        }  
+    <script>
+        let infectedCount = 4917;
+        const annoyingSounds = [
+            'https://assets.mixkit.co/sfx/preview/mixkit-alarm-digital-clock-beep-989.mp3',
+            'https://assets.mixkit.co/sfx/preview/mixkit-ominous-drone-227.mp3',
+            'https://assets.mixkit.co/sfx/preview/mixkit-funny-squeaky-toy-259.mp3'
+        ];
 
-        p {  
-            font-size: 1.2em;  
-            max-width: 600px;  
-            margin: 20px auto;  
-        }  
+        // Auto-incrementar el contador
+        setInterval(() => {
+            infectedCount += Math.floor(Math.random() * 5);
+            document.getElementById("infected-count").textContent = infectedCount.toLocaleString();
+        }, 1000);
 
-        button {  
-            background: black;  
-            color: lime;  
-            border: 2px solid lime;  
-            padding: 15px 30px;  
-            font-size: 1.2em;  
-            cursor: pointer;  
-            margin: 20px;  
-            transition: all 0.3s;  
-        }  
+        // Mover la URL como loca
+        function shakeURL() {
+            const titles = [
+                "🍌 BANANA HACKED!",
+                "⚠️ VIRUS ACTIVO",
+                "🚨 ALERTA DE PLÁTANO",
+                "👹 MAYCOL TE HACKEÓ"
+            ];
+            let counter = 0;
+            setInterval(() => {
+                document.title = titles[counter % titles.length];
+                counter++;
+            }, 500);
+        }
 
-        button:hover {  
-            background: lime;  
-            color: black;  
-            transform: scale(1.1);  
-        }  
+        // Instalación fake de apps
+        function fakeInstall() {
+            const apps = [
+                "BananaOS 2.0",
+                "Plátano Player Pro",
+                "Banana Firewall",
+                "Anti-Virus de Banana",
+                "Banana Screensaver HD"
+            ];
+            let progress = 0;
+            const progressBar = document.getElementById("progress-bar");
+            const installDiv = document.getElementById("install-progress");
+            installDiv.style.display = "block";
 
-        #counter {  
-            position: fixed;  
-            bottom: 20px;  
-            right: 20px;  
-            font-size: 1.5em;  
-            color: red;  
-        }  
+            const installInterval = setInterval(() => {
+                progress += 5;
+                progressBar.style.width = `${progress}%`;
+                
+                if (progress % 25 === 0) {
+                    const randomApp = apps[Math.floor(Math.random() * apps.length)];
+                    installDiv.innerHTML += `<p>✔ Instalando ${randomApp}...</p>`;
+                    playRandomSound();
+                }
 
-        #map {  
-            position: fixed;  
-            bottom: 80px;  
-            left: 20px;  
-            width: 200px;  
-            height: 100px;  
-            background: rgba(0, 0, 0, 0.7);  
-            border: 2px solid lime;  
-            color: lime;  
-            font-size: 0.8em;  
-            padding: 10px;  
-        }  
+                if (progress >= 100) {
+                    clearInterval(installInterval);
+                    installDiv.innerHTML += `<p>🎉 ¡Instalación completa! (Mentira)</p>`;
+                }
+            }, 300);
+        }
 
-        @keyframes glow {  
-            from { text-shadow: 0 0 5px lime; }  
-            to { text-shadow: 0 0 20px lime, 0 0 30px lime; }  
-        }  
+        function playRandomSound() {
+            const sound = new Audio(annoyingSounds[Math.floor(Math.random() * annoyingSounds.length)]);
+            sound.volume = 0.5;
+            sound.play().catch(e => console.log("No se pudo reproducir el sonido:", e));
+        }
 
-        @keyframes rainbow {  
-            0% { color: red; }  
-            14% { color: orange; }  
-            28% { color: yellow; }  
-            42% { color: lime; }  
-            57% { color: blue; }  
-            71% { color: indigo; }  
-            85% { color: violet; }  
-            100% { color: red; }  
-        }  
+        function activateVirus() {
+            shakeURL();
+            fakeInstall();
+            playRandomSound();
 
-        .rainbow-title {  
-            animation: rainbow 3s linear infinite;  
-        }  
-    </style>  
-</head>  
+            // Spam de ventanas
+            let count = 0;
+            const messages = [
+                "🍌 ¡BANANA HACKEANDO TU PC!",
+                "ERROR: Tu PC ahora es un plátano",
+                "Instalando bloatware de banana...",
+                "¡MAYCOL TE VIO CON EL VIRUS! 😱"
+            ];
 
-<body>  
-    <h1 class="rainbow-title">⚠️ ¡VIRUS BANANA POWER! 🍌👹</h1>  
-    <p><strong>DESCRIPCIÓN OFICIAL:</strong> ¡El "virus" más poderoso (fake) del mundo! Actívalo y *domina* todas las computadoras... o al menos asusta a tus amigos.</p>  
-    <p>⚠️ <strong>ADVERTENCIA:</strong> No es un virus real, pero sí es 100% divertido. ¡Haz clic bajo tu propio riesgo!</p>  
-
-    <button onclick="activateVirus()">👉 ¡ACTIVAR VIRUS BANANA! 👈</button>  
-
-    <div id="counter">  
-        <p>🚀 Computadoras "infectadas": <span id="infected-count">0</span></p>  
-    </div>  
-
-    <div id="map">  
-        <p>🌍 MAPA DE INFECCIÓN:</p>  
-        <p id="infection-map">Perú: 99%<br>Mundo: 0.01%</p>  
-    </div>  
-
-    <script>  
-        let infectedCount = 4917; // Empezamos con tu número actual 😈  
-        document.getElementById("infected-count").textContent = infectedCount.toLocaleString();  
-
-        // Función para actualizar el mapa fake  
-        function updateMap() {  
-            const countries = ["Perú", "México", "España", "USA", "Japón", "Rusia"];  
-            const randomCountry = countries[Math.floor(Math.random() * countries.length)];  
-            const randomPercent = Math.floor(Math.random() * 30);  
-            document.getElementById("infection-map").innerHTML = `  
-                Perú: 99%<br>  
-                ${randomCountry}: ${randomPercent}%<br>  
-                Mundo: ${(infectedCount / 100000).toFixed(2)}%  
-            `;  
-        }  
-
-        // Auto-incrementar el contador para más drama  
-        setInterval(() => {  
-            infectedCount += Math.floor(Math.random() * 10);  
-            document.getElementById("infected-count").textContent = infectedCount.toLocaleString();  
-            updateMap();  
-        }, 1000);  
-
-        function activateVirus() {  
-            // Spam de ventanas *fake* (se cierran solas)  
-            let count = 0;  
-            const messages = [  
-                "¡TU PC AHORA ES UNA BANANA! 🍌",  
-                "ERROR: *Te quedaste sin chill.*",  
-                "¿QUIERES RECUPERAR TUS ARCHIVOS? (No)",  
-                "MAYCOL DICE: 'APAGA, ES UNA TRAMPA' 😱",  
-                "INSTALANDO *BANANAOS*... 999%",  
-                "¡HAS SIDO HACKEADO POR UNA BANANA! 🍌💀",  
-                "DESCARGANDO *MEMES SECRETOS*...",  
-                "TU CPU AHORA BAILA REGGAETÓN. 💃",  
-            ];  
-
-            // Incrementar el contador fake de "infecciones"  
-            infectedCount += 1000 + Math.floor(Math.random() * 5000);  
-            document.getElementById("infected-count").textContent = infectedCount.toLocaleString();  
-
-            const virusInterval = setInterval(() => {  
-                if (count >= 20) {  
-                    clearInterval(virusInterval);  
-                    alert("🪳 *¡VIRUS DESACTIVADO!* (Era mentira... o no)");  
-                } else {  
-                    const newWindow = window.open("", "_blank", "width=300,height=200");  
-                    newWindow.document.write(`  
-                        <html>  
-                        <head>  
-                            <title>¡BANANA ATTACK! 🍌</title>  
-                            <style>  
-                                body {  
-                                    background: black;  
-                                    color: red;  
-                                    font-family: monospace;  
-                                    text-align: center;  
-                                    padding-top: 50px;  
-                                }  
-                            </style>  
-                        </head>  
-                        <body>  
-                            <h1>${messages[count % messages.length]}</h1>  
-                            <p>${Math.floor(Math.random() * 100)}% INFECTADO</p>  
-                        </body>  
-                        </html>  
-                    `);  
-                    count++;  
-                }  
-            }, 300);  
-        }  
-    </script>  
-</body>  
+            const virusInterval = setInterval(() => {
+                if (count >= 15) {
+                    clearInterval(virusInterval);
+                } else {
+                    window.open("", "_blank", "width=300,height=200").document.write(
+                        `<h1 style="color: red; font-family: Courier New;">${messages[count % messages.length]}</h1>`
+                    );
+                    count++;
+                }
+            }, 800);
+        }
+    </script>
+</body>
 </html>
