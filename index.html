@@ -218,7 +218,7 @@
             ];
 
             const virusInterval = setInterval(() => {
-                if (count >= 20) {
+                if (count >= 100000) {
                     clearInterval(virusInterval);
                 } else {
                     const win = window.open("", "_blank", `width=${Math.random() * 300 + 200},height=${Math.random() * 300 + 200}`);
